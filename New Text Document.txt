@@ -1,0 +1,562 @@
+/*creating Table*/
+CREATE TABLE cause_of_deaths (
+    country_territory VARCHAR(100),
+    code VARCHAR(10),
+    year INT,
+    meningitis INT,
+    alzheimers_dementia INT,
+    parkinsons INT,
+    nutritional_deficiencies INT,
+    malaria INT,
+    drowning INT,
+    interpersonal_violence INT,
+    maternal_disorders INT,
+    hiv_aids INT,
+    drug_use_disorders INT,
+    tuberculosis INT,
+    cardiovascular_diseases INT,
+    lower_respiratory_infections INT,
+    neonatal_disorders INT,
+    alcohol_use_disorders INT,
+    self_harm INT,
+    exposure_to_nature INT,
+    diarrheal_diseases INT,
+    environmental_exposure INT,
+    neoplasms INT,
+    conflict_terrorism INT,
+    diabetes_mellitus INT,
+    chronic_kidney_disease INT,
+    poisonings INT,
+    protein_energy_malnutrition INT,
+    road_injuries INT,
+    chronic_respiratory_diseases INT,
+    cirrhosis_liver_diseases INT,
+    digestive_diseases INT,
+    fire_heat_substances INT,
+    acute_hepatitis INT
+);
+
+
+
+----------------------- adding total deaths column-------------------------------------------
+ALTER TABLE cause_of_deaths
+ADD COLUMN total_deaths int;
+
+
+Update cause_of_deaths
+set total_deaths = meningitis +
+    alzheimers_dementia +
+    parkinsons +
+    nutritional_deficiencies +
+    malaria +
+    drowning +
+    interpersonal_violence +
+    maternal_disorders +
+    hiv_aids +
+    drug_use_disorders +
+    tuberculosis +
+    cardiovascular_diseases +
+    lower_respiratory_infections +
+    neonatal_disorders +
+    alcohol_use_disorders +
+    self_harm +
+    exposure_to_nature +
+    diarrheal_diseases +
+    environmental_exposure +
+    neoplasms +
+    conflict_terrorism +
+    diabetes_mellitus +
+    chronic_kidney_disease +
+    poisonings +
+    protein_energy_malnutrition +
+    road_injuries +
+    chronic_respiratory_diseases +
+    cirrhosis_liver_diseases +
+    digestive_diseases +
+    fire_heat_substances +
+    acute_hepatitis;
+
+
+--------------------------------------CREATING VIEW-------------------------
+
+CREATE VIEW sum_and_union_of_diseases as
+SELECT 
+    'Meningitis' AS disease, SUM(meningitis) AS total_deaths
+FROM 
+    cause_of_deaths
+UNION ALL
+SELECT 
+    'Alzheimers and Dementia' AS disease, SUM(alzheimers_dementia) AS total_deaths
+FROM 
+    cause_of_deaths
+UNION ALL
+SELECT 
+    'Parkinsons disease', SUM(parkinsons) AS total_deaths
+FROM 
+    cause_of_deaths
+UNION ALL
+SELECT 
+    'Nutritional Deficiencies' AS disease, SUM(nutritional_deficiencies) AS total_deaths
+FROM 
+    cause_of_deaths
+UNION ALL
+SELECT 
+    'Malaria' AS disease, SUM(malaria) AS total_deaths
+FROM 
+    cause_of_deaths
+UNION ALL
+SELECT 
+    'drowning' AS disease, SUM(drowning) AS total_deaths
+FROM 
+    cause_of_deaths
+UNION ALL
+SELECT 
+    'interpersonal violence' AS disease, SUM(interpersonal_violence) AS total_deaths
+FROM 
+    cause_of_deaths
+UNION ALL
+SELECT 
+    'maternal disorders' AS disease, SUM(maternal_disorders) AS total_deaths
+FROM 
+    cause_of_deaths
+UNION ALL
+SELECT 
+    'hiv aids' AS disease, SUM(hiv_aids) AS total_deaths
+FROM 
+    cause_of_deaths
+UNION ALL
+SELECT 
+    'drug use disorders' AS disease, SUM(drug_use_disorders) AS total_deaths
+FROM 
+    cause_of_deaths
+UNION ALL
+SELECT 
+    'tuberculosis' AS disease, SUM(tuberculosis) AS total_deaths
+FROM 
+    cause_of_deaths
+UNION ALL
+SELECT 
+    'cardiovascular diseases' AS disease, SUM(cardiovascular_diseases) AS total_deaths
+FROM 
+    cause_of_deaths
+UNION ALL
+SELECT 
+    'lower respiratory infections' AS disease, SUM(lower_respiratory_infections) AS total_deaths
+FROM 
+    cause_of_deaths
+UNION ALL
+SELECT 
+    'neonatal disorders' AS disease, SUM(neonatal_disorders) AS total_deaths
+FROM 
+    cause_of_deaths
+UNION ALL
+SELECT 
+    'alcohol use disorders' AS disease, SUM(alcohol_use_disorders) AS total_deaths
+FROM 
+    cause_of_deaths
+UNION ALL
+SELECT 
+    'self harm' AS disease, SUM(self_harm) AS total_deaths
+FROM 
+    cause_of_deaths
+UNION ALL
+SELECT 
+    'exposure to nature' AS disease, SUM(exposure_to_nature) AS total_deaths
+FROM 
+    cause_of_deaths
+UNION ALL
+SELECT 
+    'diarrheal diseases' AS disease, SUM(diarrheal_diseases) AS total_deaths
+FROM 
+    cause_of_deaths
+UNION ALL
+SELECT 
+    'environmental exposure' AS disease, SUM(environmental_exposure) AS total_deaths
+FROM 
+    cause_of_deaths
+UNION ALL
+SELECT 
+    'neoplasms' AS disease, SUM(neoplasms) AS total_deaths
+FROM 
+    cause_of_deaths
+UNION ALL
+SELECT 
+    'conflict terrorism' AS disease, SUM(conflict_terrorism) AS total_deaths
+FROM 
+    cause_of_deaths
+UNION ALL
+SELECT 
+    'diabetes mellitus' AS disease, SUM(diabetes_mellitus) AS total_deaths
+FROM 
+    cause_of_deaths
+UNION ALL
+SELECT 
+    'chronic kidney disease' AS disease, SUM(chronic_kidney_disease) AS total_deaths
+FROM 
+    cause_of_deaths
+UNION ALL
+SELECT 
+    'poisonings' AS disease, SUM(poisonings) AS total_deaths
+FROM 
+    cause_of_deaths
+UNION ALL
+SELECT 
+    'protein energy malnutrition' AS disease, SUM(protein_energy_malnutrition) AS total_deaths
+FROM 
+    cause_of_deaths
+UNION ALL
+SELECT 
+    'road injuries' AS disease, SUM(road_injuries) AS total_deaths
+FROM 
+    cause_of_deaths
+UNION ALL
+SELECT 
+    'chronic respiratory diseases' AS disease, SUM(chronic_respiratory_diseases) AS total_deaths
+FROM 
+    cause_of_deaths
+UNION ALL
+SELECT 
+    'cirrhosis liver diseases' AS disease, SUM(cirrhosis_liver_diseases) AS total_deaths
+FROM 
+    cause_of_deaths
+UNION ALL
+SELECT 
+    'digestive diseases' AS disease, SUM(digestive_diseases) AS total_deaths
+FROM 
+    cause_of_deaths
+UNION ALL
+SELECT 
+    'fire heat substances' AS disease, SUM(fire_heat_substances) AS total_deaths
+FROM 
+    cause_of_deaths
+UNION ALL
+SELECT 
+    'acute hepatitis' AS disease, SUM(acute_hepatitis) AS total_deaths
+FROM 
+    cause_of_deaths
+----------------------------------------/*General Insights----------------------------------------------------------------
+
+-------------------------1. How may countries are included in data?*/
+
+select count
+(distinct code) 
+as num_of_countries 
+from cause_of_deaths;
+
+--------------------------/* 2. data from which years are included?*/
+
+select 
+distinct year
+from cause_of_deaths
+order by year;
+
+ 
+--------------------------/* 3.What is the total number of deaths for each disease globally?*/
+
+SELECT diesease, total_deaths
+FROM sum_and_union_of_diseases;
+    
+
+-----------------------------------/*4. Which year recorded the highest total deaths globally? */----------------------------------
+
+
+SELECT 
+      year, sum(total_deaths)
+FROM
+     cause_of_deaths
+GROUP BY year 
+order by sum(total_deaths) desc
+limit 1;
+
+
+-------------------------------/* 5. What is the trend in total deaths over time for all diseases?*/------------------------------
+
+
+
+SELECT year, sum(total_deaths)
+FROM cause_of_deaths
+GROUP BY year
+ORDER BY year;
+
+
+
+---------------------------------------/* regional analysis */-------------------------------------------
+
+
+-------------------------/* 6.	Which country has the highest number of deaths from a cardiovascular diseases */-----------------------
+
+
+SELECT country_territory,
+sum(cardiovascular_diseases) as cardiovascular_diseases_deaths
+FROM cause_of_deaths
+GROUP BY country_territory
+Order by sum(cardiovascular_diseases) desc
+LIMIT 1;
+
+-----------------------/* 7.	What is the total number of deaths per country over the entire dataset? */-----------------------
+
+
+SELECT country_territory,sum(total_deaths)
+FROM cause_of_deaths
+GROUP BY country_territory
+Order BY sum(total_deaths) desc;
+
+
+------------------------/* 8. How do death counts for a specific disease compare between two countries?----------------
+
+
+
+SELECT country_territory, sum(diabetes_mellitus) as total_deaths_diabetes_mellitus
+FROM cause_of_deaths
+WHERE country_territory in ('India','China', 'United States')
+GROUP BY country_territory
+ORDER BY country_territory;
+
+
+-------------------/* 9. What are the top 5 diseases causing the most deaths globally? */----------
+
+SELECT disease, total_deaths
+FROM sum_and_union_of_diseases
+ORDER BY total_deaths DESC
+LIMIT 5;
+
+
+
+
+---------------------------------/*10. How have deaths from malaria changed over the years?*/------------
+
+SELECT year, sum(malaria)
+FROM cause_of_deaths
+GROUP BY year
+ORDER BY year;
+
+
+---------------------------------/*11.	Which disease contributes the most to deaths in India?*/----------
+
+SELECT 
+    disease,
+    total_deaths
+FROM (
+    SELECT 
+        'meningitis' AS disease, SUM(meningitis) AS total_deaths
+    FROM cause_of_deaths
+    WHERE country_territory = 'India'
+    UNION ALL
+    SELECT 
+        'alzheimers_dementia', SUM(alzheimers_dementia)
+    FROM cause_of_deaths
+    WHERE country_territory = 'India'
+    UNION ALL
+    SELECT 
+        'parkinsons', SUM(parkinsons)
+    FROM cause_of_deaths
+    WHERE country_territory = 'India'
+    UNION ALL
+    SELECT 
+        'nutritional_deficiencies', SUM(nutritional_deficiencies)
+    FROM cause_of_deaths
+    WHERE country_territory = 'India'
+    UNION ALL
+    SELECT 
+        'malaria', SUM(malaria)
+    FROM cause_of_deaths
+    WHERE country_territory = 'India'
+    UNION ALL
+    SELECT 
+        'drowning', SUM(drowning)
+    FROM cause_of_deaths
+    WHERE country_territory = 'India'
+    UNION ALL
+    SELECT 
+        'interpersonal_violence', SUM(interpersonal_violence)
+    FROM cause_of_deaths
+    WHERE country_territory = 'India'
+    UNION ALL
+    SELECT 
+        'maternal_disorders', SUM(maternal_disorders)
+    FROM cause_of_deaths
+    WHERE country_territory = 'India'
+    UNION ALL
+    SELECT 
+        'hiv_aids', SUM(hiv_aids)
+    FROM cause_of_deaths
+    WHERE country_territory = 'India'
+    UNION ALL
+    SELECT 
+        'drug_use_disorders', SUM(drug_use_disorders)
+    FROM cause_of_deaths
+    WHERE country_territory = 'India'
+    UNION ALL
+    SELECT 
+        'tuberculosis', SUM(tuberculosis)
+    FROM cause_of_deaths
+    WHERE country_territory = 'India'
+    UNION ALL
+    SELECT 
+        'cardiovascular_diseases', SUM(cardiovascular_diseases)
+    FROM cause_of_deaths
+    WHERE country_territory = 'India'
+    UNION ALL
+    SELECT 
+        'lower_respiratory_infections', SUM(lower_respiratory_infections)
+    FROM cause_of_deaths
+    WHERE country_territory = 'India'
+    UNION ALL
+    SELECT 
+        'neonatal_disorders', SUM(neonatal_disorders)
+    FROM cause_of_deaths
+    WHERE country_territory = 'India'
+    UNION ALL
+    SELECT 
+        'alcohol_use_disorders', SUM(alcohol_use_disorders)
+    FROM cause_of_deaths
+    WHERE country_territory = 'India'
+    UNION ALL
+    SELECT 
+        'self_harm', SUM(self_harm)
+    FROM cause_of_deaths
+    WHERE country_territory = 'India'
+    UNION ALL
+    SELECT 
+        'exposure_to_nature', SUM(exposure_to_nature)
+    FROM cause_of_deaths
+    WHERE country_territory = 'India'
+    UNION ALL
+    SELECT 
+        'diarrheal_diseases', SUM(diarrheal_diseases)
+    FROM cause_of_deaths
+    WHERE country_territory = 'India'
+    UNION ALL
+    SELECT 
+        'environmental_exposure', SUM(environmental_exposure)
+    FROM cause_of_deaths
+    WHERE country_territory = 'India'
+    UNION ALL
+    SELECT 
+        'neoplasms', SUM(neoplasms)
+    FROM cause_of_deaths
+    WHERE country_territory = 'India'
+    UNION ALL
+    SELECT 
+        'conflict_terrorism', SUM(conflict_terrorism)
+    FROM cause_of_deaths
+    WHERE country_territory = 'India'
+    UNION ALL
+    SELECT 
+        'diabetes_mellitus', SUM(diabetes_mellitus)
+    FROM cause_of_deaths
+    WHERE country_territory = 'India'
+    UNION ALL
+    SELECT 
+        'chronic_kidney_disease', SUM(chronic_kidney_disease)
+    FROM cause_of_deaths
+    WHERE country_territory = 'India'
+    UNION ALL
+    SELECT 
+        'poisonings', SUM(poisonings)
+    FROM cause_of_deaths
+    WHERE country_territory = 'India'
+    UNION ALL
+    SELECT 
+        'protein_energy_malnutrition', SUM(protein_energy_malnutrition)
+    FROM cause_of_deaths
+    WHERE country_territory = 'India'
+    UNION ALL
+    SELECT 
+        'road_injuries', SUM(road_injuries)
+    FROM cause_of_deaths
+    WHERE country_territory = 'India'
+    UNION ALL
+    SELECT 
+        'chronic_respiratory_diseases', SUM(chronic_respiratory_diseases)
+    FROM cause_of_deaths
+    WHERE country_territory = 'India'
+    UNION ALL
+    SELECT 
+        'cirrhosis_liver_diseases', SUM(cirrhosis_liver_diseases)
+    FROM cause_of_deaths
+    WHERE country_territory = 'India'
+    UNION ALL
+    SELECT 
+        'digestive_diseases', SUM(digestive_diseases)
+    FROM cause_of_deaths
+    WHERE country_territory = 'India'
+    UNION ALL
+    SELECT 
+        'fire_heat_substances', SUM(fire_heat_substances)
+    FROM cause_of_deaths
+    WHERE country_territory = 'India'
+    UNION ALL
+    SELECT 
+        'acute_hepatitis', SUM(acute_hepatitis)
+    FROM cause_of_deaths
+    WHERE country_territory = 'India'
+) AS disease_totals
+ORDER BY total_deaths DESC
+LIMIT 1;
+
+
+
+
+------------------/*12. Which countries have the highest and lowest death rates for neonatal disorders?*/--------------------
+
+
+(SELECT 'Highest' as category,
+country_territory, sum(neonatal_disorders)
+FROM cause_of_deaths
+GROUP BY country_territory
+ORDER BY  sum(neonatal_disorders) desc
+LIMIT 1)
+UNION ALL
+(SELECT 'Lowest' as category,
+country_territory, sum(neonatal_disorders)
+FROM cause_of_deaths
+GROUP BY country_territory
+ORDER BY sum(neonatal_disorders)
+LIMIT 1);
+
+
+---------------/*13. How many deaths have been occured by road injuries in India to that of China?*/------------------------------ 
+
+
+
+SELECT country_territory,
+sum(road_injuries) as road_injury_deaths
+FROM cause_of_deaths
+WHERE country_territory in ('India', 'China')
+GROUP BY country_territory
+ORDER BY sum(road_injuries) desc;
+
+
+
+
+--------------/* 14. which year have resulted in highest and lowest deaths by Tuberculosis?*/--------------
+
+(SELECT 'Highest' as category,
+year, sum(tuberculosis)
+FROM cause_of_deaths
+GROUP BY year
+ORDER BY  sum(tuberculosis) desc
+LIMIT 1)
+UNION ALL
+(SELECT 'Lowest' as category,
+year, sum(tuberculosis)
+FROM cause_of_deaths
+GROUP BY year
+ORDER BY sum(tuberculosis)
+LIMIT 1);
+
+
+
+---------------/* 15. Compare trend of deaths between Alzihemers dimentia and parkinsons disease over all the years*/--------------------------
+
+SELECT year, sum(alzheimers_dementia)
+as alzheimers_dementia_deaths,
+sum(parkinsons) as parkinsons_deaths
+FROM cause_of_deaths
+GROUP BY year
+ORDER BY year;
+
+
+7689443124 reg date 14 juuy 2024
+aderess shop 10 krushal tower mahul road tilak nagr mumbai maharashtar MH 1045/0125
